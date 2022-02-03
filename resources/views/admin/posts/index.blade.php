@@ -21,8 +21,16 @@
                         <td>{{$post->id}}</td>
                         <td>{{$post->title}}</td>
                         <td><a href="{{route('admin.posts.show', $post)}}" class="btn btn-success">Vedi</a></td>
-                        <td><a href="#" class="btn btn-warning">Modifica</a></td>
-                        <td><a href="#" class="btn btn-danger">Elimina</a></td>
+                        <td><a href="{{route('admin.posts.edit', $post)}}" class="btn btn-warning">Modifica</a></td>
+
+                        <td>
+                          <form onsubmit="return confirm('Sei sicuro di eliminare il post: {{$post->title}}?')" action="{{route('admin.posts.destroy', $post)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" class="btn btn-danger">Elimina</button>
+                          </form>
+                        </td>
                     </tr>
                   @endforeach
                 </tbody>

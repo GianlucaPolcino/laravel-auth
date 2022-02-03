@@ -10,8 +10,7 @@
     </p>
 
     <div class="container pt-5">
-        <a href="#" class="btn btn-warning mr-3">Modifica</a>
-        <a href="#" class="btn btn-danger">Cancella</a>
+        <a href="{{route('admin.posts.edit', $post)}}" class="btn btn-warning mr-3">Modifica</a>
     </div>
 @endsection
 

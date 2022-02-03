@@ -4,7 +4,7 @@
     <div class="container">
 
         <h1 class="text-center py-3">
-            Creazione articolo
+            Modifica articolo
         </h1>
 
         @if ($errors->any())
@@ -19,11 +19,12 @@
             </div>
         @endif
 
-        <form action="{{route('admin.posts.store')}}" method="POST">
+        <form action="{{route('admin.posts.update', $post)}}" method="POST">
             @csrf
+            @method('PUt')
             <div class="form-group">
               <label for="title">Titolo Post</label>
-              <input value="{{old('title')}}" type="text" class="form-control @error('title') is-invalid  @enderror" id="title" name="title" placeholder="Titolo">
+              <input value="{{old('title', $post->title)}}" type="text" class="form-control @error('title') is-invalid  @enderror" id="title" name="title" placeholder="Titolo">
               @error('title')
                   <p class="text-danger">
                     {{$message}}
@@ -32,7 +33,7 @@
             </div>
             <div class="form-group">
               <label for="content">Testo</label>
-              <textarea class="form-control @error('content') is-invalid  @enderror" id="content" name="content" rows="3">{{old('content')}}</textarea>
+              <textarea class="form-control @error('content') is-invalid  @enderror" id="content" name="content" rows="3">{{old('content', $post->content)}}</textarea>
               @error('content')
                 <p class="text-danger">
                     {{$message}}
@@ -50,5 +51,5 @@
 @endsection
 
 @section('title')
-    Creazione articolo
+    Modifica articolo
 @endsection
